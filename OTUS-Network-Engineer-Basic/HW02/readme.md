@@ -3,7 +3,7 @@
 **Лабораторная работа. Просмотр таблицы MAC-адресов коммутатора** 
 
 # **Топология**
-![There are two switches and two PCs in the topology. PC-A is connected to S1 via F0/6. S1 F0/1 is connected to S2 F0/1. PC-B is connected to S2 via F/18.](Aspose.Words.1f5280f0-c6d8-45b6-b667-dac573088114.001.png)
+![There are two switches and two PCs in the topology. PC-A is connected to S1 via F0/6. S1 F0/1 is connected to S2 F0/1. PC-B is connected to S2 via F/18.](0201.png)
 # **Таблица адресации**
 
 |**Устройство**|**Интерфейс**|**IP-адрес**|**Маска подсети**|
