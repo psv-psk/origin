@@ -108,14 +108,23 @@ SW-Cogent(config)# exit
 ```
 
 1.2.2 *Настройка VLAN и trunk-портов:*
+
+|VLANs	|Description	|
+|------------|--------------|
+|Vlan10	|MTS	|
+|Vlan11	|Beeline|	
+|Vlan12	|Megafon	|
+|Vlan13	|Inet for TS|	
+|Vlan14	|vpbx	|
+
 ```
 SW-Cogent(config)# vlan 10
-SW-Cogent(config-vlan)# name Sales
-SW-Cogent(config)# vlan 20
-SW-Cogent(config-vlan)# name Marketing
+SW-Cogent(config-vlan)# name MTS
+SW-Cogent(config)# vlan 13
+SW-Cogent(config-vlan)# name Inet for TS
 SW-Cogent(config)# interface gigabitethernet 0/1
 SW-Cogent(config-if)# switchport mode trunk
-SW-Cogent(config-if)# switchport trunk allowed vlan 10,20
+SW-Cogent(config-if)# switchport trunk allowed vlan 10,13
 SW-Cogent(config)# interface gigabitethernet 0/2
 SW-Cogent(config-if)# switchport mode access
 SW-Cogent(config-if)# switchport access vlan 10
