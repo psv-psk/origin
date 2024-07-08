@@ -202,30 +202,37 @@ R-Serverius(config)# exit
 
 3.1. Настройка маршрутных политик:
 ```
-Switch> enable
-Switch# configure terminal
-Switch(config)# ip route 0.0.0.0 0.0.0.0 192.168.1.2 100
-Switch(config)# ip route 0.0.0.0 0.0.0.0 192.168.1.3 200
-Switch(config)# exit
+SW-Serverius> enable
+SW-Serverius# configure terminal
+SW-Serverius(config)# ip route 0.0.0.0 0.0.0.0 10.8.230.2 100
+SW-Serverius(config)# ip route 0.0.0.0 0.0.0.0 10.8.240.2 200
+SW-Serverius(config)# exit
 ```
 
 3.2. Настройка механизмов QoS:
+
+Для настройки механизмов QoS (Quality of Service) на коммутаторе Cisco для VoIP трафика, следует выполнить следующие шаги:
+3.2.1 Создадим классификацию трафика VoIP с помощью ACL (Access Control List).
+3.2.2 Создадим класс маршрутизации (class-map), который соответствует этому ACL.
+3.2.3 Создадим политику QoS (policy-map) для управления трафиком VoIP. Назовем ее VOIP-POLICY.
+
 ```
-Switch> enable
-Switch# configure terminal
-Switch(config)# access-list 101 permit tcp any any eq 80
-Switch(config)# class-map HTTP
-Switch(config-cmap)# match access-group 101
-Switch(config-cmap)# exit
-Switch(config)# policy-map QoS
-Switch(config-pmap)# class HTTP
-Switch(config-pmap-c)# set dscp af21
-Switch(config-pmap-c)# exit
-Switch(config-pmap)# exit
-Switch(config)# interface GigabitEthernet0/1
-Switch(config-if)# service-policy input QoS
-Switch(config-if)# exit
-Switch(config)# exit
+SW-Serverius> enable
+SW-Serverius# configure terminal
+SW-Serverius(config)# access-list 100 permit udp any any range 16384 32767
+SW-Serverius(config)# class-map match-any VOIP
+SW-Serverius(config-cmap)# match access-group 100
+SW-Serverius(config-cmap)# exit
+SW-Serverius(config)# policy-map VOIP-POLICY
+SW-Serverius(config-pmap)# class VOIP
+SW-Serverius(config-pmap-c)# set dscp ef
+SW-Serverius(config-pmap-c)# priority percent 30
+SW-Serverius(config-pmap-c)# exit
+SW-Serverius(config-pmap)# exit
+SW-Serverius(config)# interface GigabitEthernet0/1
+SW-Serverius(config-if)# service-policy input VOIP-POLICY
+SW-Serverius(config-if)# exit
+SW-Serverius(config)# exit
 ```
 
 В этих примерах настроены маршрутные политики для установления приоритетов маршрутов с помощью команд ip route и установлены механизмы QoS с использованием классификации трафика (access-list и class-map), определения политики QoS (policy-map) и применения политики на интерфейсе (service-policy).
