@@ -192,22 +192,7 @@ Switch(config-router)# exit
 Switch(config)# exit
 ```
 
-2.2.2. *Настройка BGP:*
-```
-Switch> enable
-Switch# configure terminal
-Switch(config)# router bgp 65000
-Switch(config-router)# neighbor 192.168.1.2 remote-as 65001
-Switch(config-router)# neighbor 192.168.1.2 update-source Loopback0
-Switch(config-router)# neighbor 192.168.1.3 remote-as 65002
-Switch(config-router)# neighbor 192.168.1.3 update-source Loopback0
-Switch(config-router)# exit
-Switch(config)# ip route 0.0.0.0 0.0.0.0 192.168.1.2
-Switch(config)# ip route 0.0.0.0 0.0.0.0 192.168.1.3
-Switch(config)# exit
-```
-
-В этих примерах настроены протоколы маршрутизации OSPF и BGP. Для OSPF была настроена область сети и указаны подсети для обмена маршрутной информацией. Для BGP были добавлены соседи с указанием remote-as и update-source для Loopback интерфейса. Также были созданы два независимых маршрута (для каждого провайдера) с использованием команд ip route.
+В этом примере настроены протокол маршрутизации OSPF. Для OSPF была настроена область сети и указаны подсети для обмена маршрутной информацией. Также были созданы два независимых маршрута (для каждого провайдера) с использованием команд ip route.
 
 
 3. Настройка маршрутных политик:
