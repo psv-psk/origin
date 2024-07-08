@@ -18,9 +18,8 @@
 4. DHCP
 5. QoS
 6. NTP
-7. NAT
-8. SYSLOG
-9. GRE/IPSec
+7. SYSLOG
+8. GRE/IPSec
 
 ### Анализ и схема существующей сети ###
 
