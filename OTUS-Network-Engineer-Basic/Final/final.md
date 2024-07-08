@@ -99,31 +99,31 @@
 ```
 Switch> enable
 Switch# configure terminal
-Switch(config)# hostname SW2
-SW2(config)# interface vlan 1
-SW2(config-if)# ip address 192.168.1.2 255.255.255.0
-SW2(config-if)# no shutdown
-SW2(config-if)# exit
-SW2(config)# exit
+Switch(config)# hostname SW-Cogent
+SW-Cogent(config)# interface vlan 1
+SW-Cogent(config-if)# ip address 192.168.1.2 255.255.255.0
+SW-Cogent(config-if)# no shutdown
+SW-Cogent(config-if)# exit
+SW-Cogent(config)# exit
 ```
 
-1.2.2 *Настройка VLAN и trunk-портов:**
+1.2.2 *Настройка VLAN и trunk-портов:*
 ```
-SW2(config)# vlan 10
-SW2(config-vlan)# name Sales
-SW2(config)# vlan 20
-SW2(config-vlan)# name Marketing
-SW2(config)# interface gigabitethernet 0/1
-SW2(config-if)# switchport mode trunk
-SW2(config-if)# switchport trunk allowed vlan 10,20
-SW2(config)# interface gigabitethernet 0/2
-SW2(config-if)# switchport mode access
-SW2(config-if)# switchport access vlan 10
+SW-Cogent(config)# vlan 10
+SW-Cogent(config-vlan)# name Sales
+SW-Cogent(config)# vlan 20
+SW-Cogent(config-vlan)# name Marketing
+SW-Cogent(config)# interface gigabitethernet 0/1
+SW-Cogent(config-if)# switchport mode trunk
+SW-Cogent(config-if)# switchport trunk allowed vlan 10,20
+SW-Cogent(config)# interface gigabitethernet 0/2
+SW-Cogent(config-if)# switchport mode access
+SW-Cogent(config-if)# switchport access vlan 10
 ```
 
 1.2.3 *Сохранение конфигурации:*
 ```
-SW2# copy running-config startup-config
+SW-Cogent# copy running-config startup-config
 ```
 
 ### 1.3 Настройка VRRP (Virtual Router Redundancy Protocol):
