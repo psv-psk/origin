@@ -143,27 +143,27 @@ SW-Cogent# copy running-config startup-config
 
 1.3.1 *Настройка основного коммутатора (Primary):*
 ```
-Switch> enable
-Switch# configure terminal
-Switch(config)# interface vlan 1
-Switch(config-if)# vrrp 1 ip 192.168.1.1
-Switch(config-if)# vrrp 1 priority 110
-Switch(config-if)# vrrp 1 preempt
-Switch(config-if)# exit
-Switch(config)# exit
+SW-Serverius> enable
+SW-Serverius# configure terminal
+SW-Serverius(config)# interface vlan 1
+SW-Serverius(config-if)# vrrp 1 ip 10.8.230.1
+SW-Serverius(config-if)# vrrp 1 priority 110
+SW-Serverius(config-if)# vrrp 1 preempt
+SW-Serverius(config-if)# exit
+SW-Serverius(config)# exit
 ```
 
 1.3.2. *Настройка резервного коммутатора (Backup):*
 ```
-Switch> enable
-Switch# configure terminal
-Switch(config)# interface vlan 1
-Switch(config-if)# vrrp 1 ip 192.168.1.1
-Switch(config-if)# vrrp 1 priority 100
-Switch(config-if)# exit
-Switch(config)# exit
+SW-Cogent> enable
+SW-Cogent# configure terminal
+SW-Cogent(config)# interface vlan 1
+SW-Cogent(config-if)# vrrp 1 ip 10.8.230.1
+SW-Cogent(config-if)# vrrp 1 priority 100
+SW-Cogent(config-if)# exit
+SW-Cogent(config)# exit
 ```
-В этом примере настроен VRRP с группой номер 1 на коммутаторах. Основной коммутатор имеет более высокий приоритет (110), что позволяет ему быть основным устройством, а резервный коммутатор имеет приоритет 100. Параметр "preempt" на основном коммутаторе позволяет ему вернуться в роль основного устройства после восстановления.
+В этом примере настроен VRRP на коммутаторах. Основной коммутатор имеет более высокий приоритет (110), что позволяет ему быть основным устройством, а резервный коммутатор имеет приоритет 100. Параметр "preempt" на основном коммутаторе позволяет ему вернуться в роль основного устройства после восстановления.
 
 
 # 2. Резервирование каналов:
