@@ -185,14 +185,13 @@ SW-Cogent(config)# exit
 R-Serverius> enable
 R-Serverius# configure terminal
 R-Serverius(config)# router ospf 1
-R-Serverius(config-router)# network 192.168.1.0 0.0.0.255 area 0
-R-Serverius(config-router)# network 192.168.2.0 0.0.0.255 area 0
-R-Serverius(config-router)# network 10.10.10.0 0.0.0.255 area 0
+R-Serverius(config-router)# network 10.8.230.0 0.0.255.255 area 0
+...
 R-Serverius(config-router)# exit
 R-Serverius(config)# exit
 ```
 
-В этом примере настроены протокол маршрутизации OSPF. Для OSPF была настроена область сети и указаны подсети для обмена маршрутной информацией. Также были созданы два независимых маршрута (для каждого провайдера) с использованием команд ip route.
+В этом примере настроены протокол маршрутизации OSPF. Для OSPF была настроена область сети и указана 1 укрупненнная подсеть(т.к. сервера в одной стойке т нет необходимости их расписывать) для обмена маршрутной информацией. Также были созданы два независимых маршрута (для каждого провайдера) с использованием команд ip route.
 
 
 3. Настройка маршрутных политик:
